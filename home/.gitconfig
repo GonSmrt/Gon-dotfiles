@@ -1,0 +1,9 @@
+[user]
+	name = Gonzalo Pereira
+	email = pgonzalo2015@gmail.com
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	cm = commit -m
+	lg = log --oneline --graph --all
