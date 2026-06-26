@@ -79,7 +79,7 @@ backup_file "$HOME/.p10k.zsh"
 backup_file "$HOME/.gitconfig"
 
 # ------------------------
-# DOTFILES
+# HOME  DOTFILES
 # ------------------------
 
 echo "🔗 Aplicando dotfiles..."
@@ -88,9 +88,18 @@ ln -sf "$REPO_DIR/home/zsh/.zshrc" "$HOME/.zshrc"
 ln -sf "$REPO_DIR/home/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
 ln -sf "$REPO_DIR/home/.gitconfig" "$HOME/.gitconfig"
 
+#-------------------------
+# CONFIG DOTFILES
+#-------------------------
+
+
 # fastfetch (más robusto que glob)
 mkdir -p "$HOME/.config/fastfetch"
 cp -r "$REPO_DIR/config/fastfetch/." "$HOME/.config/fastfetch/"
+
+# kitty (terminal mamalóna)
+mkdir -p "$HOME/.config/kitty"
+cp -r "$REPO_DIR/config/kitty/." "$HOME/.config/kitty/"
 
 # ------------------------
 # FINAL
