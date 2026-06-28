@@ -23,7 +23,8 @@ print_banner
 # ------------------------
 
 if [ -f /etc/os-release ]; then
-    . /etc/os-release
+  # shellcheck source=/etc/os-release 
+ . /etc/os-release
     OS=$ID
 else
     echo "❌ Sistema no soportado"
