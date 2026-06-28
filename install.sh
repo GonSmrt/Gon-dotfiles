@@ -163,6 +163,9 @@ cp -r "$REPO_DIR/config/fastfetch/." "$HOME/.config/fastfetch/"
 mkdir -p "$HOME/.config/kitty"
 cp -r "$REPO_DIR/config/kitty/." "$HOME/.config/kitty/"
 
+echo "⚙️ Instalando Fastfetch..."
+echo "⚙️ Instalando Kitty..."
+
 #-------------------------
 # WALLPAPER
 #-------------------------
@@ -172,6 +175,7 @@ print_section "Wallpaper"
 mkdir -p "$HOME/Pictures/Wallpapers"
 cp -r "$REPO_DIR/resources/wallpapers/." "$HOME/Pictures/Wallpapers/"
 
+echo "🖼️ Copiando wallpapers..."
 
 # ------------------------
 # FINAL
