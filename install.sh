@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 print_section() {
     echo
@@ -163,6 +163,9 @@ ln -sf "$REPO_DIR/home/.gitconfig" "$HOME/.gitconfig"
 
 print_section "Configuraciones"
 
+echo "⚙️ Instalando Fastfetch..."
+echo "⚙️ Instalando Kitty..."
+
 # fastfetch (más robusto que glob)
 mkdir -p "$HOME/.config/fastfetch"
 cp -r "$REPO_DIR/config/fastfetch/." "$HOME/.config/fastfetch/"
@@ -171,8 +174,6 @@ cp -r "$REPO_DIR/config/fastfetch/." "$HOME/.config/fastfetch/"
 mkdir -p "$HOME/.config/kitty"
 cp -r "$REPO_DIR/config/kitty/." "$HOME/.config/kitty/"
 
-echo "⚙️ Instalando Fastfetch..."
-echo "⚙️ Instalando Kitty..."
 
 #-------------------------
 # WALLPAPER
@@ -180,10 +181,11 @@ echo "⚙️ Instalando Kitty..."
 
 print_section "Wallpaper"
 
+echo "🖼️ Copiando wallpapers..."
+
 mkdir -p "$HOME/Pictures/Wallpapers"
 cp -r "$REPO_DIR/resources/wallpapers/." "$HOME/Pictures/Wallpapers/"
 
-echo "🖼️ Copiando wallpapers..."
 
 # ------------------------
 # FINAL
