@@ -187,6 +187,57 @@ mkdir -p "$HOME/Pictures/Wallpapers"
 cp -r "$REPO_DIR/resources/wallpapers/." "$HOME/Pictures/Wallpapers/"
 
 
+#------------------------
+# Fuentes
+#-----------------------
+
+print_section "Fuentes"
+
+echo "🔤 Instalando fuentes..."
+
+mkdir -p "$HOME/.local/share/fonts"
+
+cp -r "$REPO_DIR/resources/fonts/." "$HOME/.local/share/fonts/"
+
+echo "🔤 Actualizando caché de fuentes..."
+
+fc-cache -fv
+
+#------------------------
+# TEMAS E ICONOS
+#------------------------
+
+print_section "Temas e iconos"
+
+echo "🎨 Instalando temas..."
+
+mkdir -p "$HOME/.themes"
+
+if [ -d "$REPO_DIR/resources/themes/Orchis-Dark" ]; then
+    cp -r "$REPO_DIR/resources/themes/Orchis-Dark" "$HOME/.themes/"
+
+fi
+
+echo "🖼️ Instalando iconos..."
+
+mkdir -p "$HOME/.icons"
+
+if [ -d "$REPO_DIR/resources/icons/Papirus-Dark" ]; then
+    cp -r "$REPO_DIR/resources/icons/Papirus-Dark" "$HOME/.icons/"
+fi
+
+echo "⚙️ Aplicando tema..."
+
+if [ "$OS" = "linuxmint" ] && command -v gsettings >/dev/null 2>&1; then
+	gsettings set org.cinnamon.desktop.interface gtk-theme "Orchis-Dark"
+	gsettings set org.cinnamon.desktop.interface icon-theme "Papirus-Dark"
+
+	echo "✅ Tema Orchis-Dark aplicado"
+	echo "✅ Iconos Papirus-Dark aplicados"
+else
+    echo "⚠️ gsettings no encontrado. Se copiaron los temas, pero no se aplicaron automáticamente."
+fi
+
 # ------------------------
 # FINAL
 # ------------------------
