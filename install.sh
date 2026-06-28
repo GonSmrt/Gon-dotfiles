@@ -166,6 +166,8 @@ cp -r "$REPO_DIR/config/kitty/." "$HOME/.config/kitty/"
 # WALLPAPER
 #-------------------------
 
+print_section "Wallpaper"
+
 mkdir -p "$HOME/Pictures/Wallpapers"
 cp -r "$REPO_DIR/resources/wallpapers/." "$HOME/Pictures/Wallpapers/"
 
