@@ -1,7 +1,22 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Instalando dotfiles v3..."
+print_section() {
+    echo
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "▶ $1"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+}
+
+print_banner() {
+    echo
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "🚀 Instalador Gon dotfiles"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo
+}
+
+print_banner
 
 # ------------------------
 # DETECCIÓN DEL SISTEMA
@@ -15,11 +30,29 @@ else
     exit 1
 fi
 
-echo "🧠 Sistema detectado: $OS"
+case "$OS" in
+    ubuntu|linuxmint|debian)
+     PKG_MANAGER="apt"
+        ;;
+    arch|cachyos)
+     PKG_MANAGER="pacman"
+        ;;
+    *)
+     PKG_MANAGER="desconocido"
+        ;;
+esac
+
+ARCH=$(uname -m)
+
+echo "🧠 Sistema detectado: $PRETTY_NAME"
+echo "📦 Gestor de paquetes: $PKG_MANAGER"
+echo "💻 Arquitectura: $ARCH"
 
 # ------------------------
 # REPO
 # ------------------------
+
+print_section "Repositorio"
 
 REPO_DIR="$HOME/gon-dotfiles"
 
@@ -36,6 +69,8 @@ cd "$REPO_DIR"
 # ------------------------
 # DEPENDENCIAS
 # ------------------------
+
+print_section "Instalando dependencias"
 
 install_deps_ubuntu() {
     echo "📦 Instalando dependencias (apt)..."
@@ -54,18 +89,41 @@ install_deps_ubuntu() {
         fontconfig
 }
 
+install_deps_arch() {
+    echo "📦 Instalando dependencias (pacman)..."
+
+    sudo pacman -Syu --needed \
+        zsh \
+        git \
+        fastfetch \
+        btop \
+        cava \
+        curl \
+        wget \
+        unzip \
+        fontconfig
+}
+
+
 case "$OS" in
     ubuntu|linuxmint|debian)
         install_deps_ubuntu
         ;;
-    *)
-        echo "⚠️ Sistema no soportado para instalación automática de deps"
+ 
+    arch|cachyos)
+       install_deps_arch
+        ;;
+
+   *)
+       echo "⚠️ Sistema no soportado para instalación automática de deps"
         ;;
 esac
 
 # ------------------------
 # BACKUPS
 # ------------------------
+
+print_section "Creando backups"
 
 backup_file() {
     if [ -e "$1" ]; then
@@ -82,6 +140,8 @@ backup_file "$HOME/.gitconfig"
 # HOME  DOTFILES
 # ------------------------
 
+print_section "Instalando home dotfiles"
+
 echo "🔗 Aplicando dotfiles..."
 
 ln -sf "$REPO_DIR/home/zsh/.zshrc" "$HOME/.zshrc"
@@ -92,6 +152,7 @@ ln -sf "$REPO_DIR/home/.gitconfig" "$HOME/.gitconfig"
 # CONFIG DOTFILES
 #-------------------------
 
+print_section "Configuraciones"
 
 # fastfetch (más robusto que glob)
 mkdir -p "$HOME/.config/fastfetch"
@@ -104,6 +165,8 @@ cp -r "$REPO_DIR/config/kitty/." "$HOME/.config/kitty/"
 # ------------------------
 # FINAL
 # ------------------------
+
+print_section "Finalizando"
 
 echo "✅ Instalación completada"
 echo "💡 Ejecuta: exec zsh"
