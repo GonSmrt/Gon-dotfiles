@@ -296,7 +296,8 @@ apply_desktop_theme() {
     esac
 }
 
-
+gsettings set org.cinnamon.desktop.interface gtk-theme "Orchis-Dark"
+gsettings set org.cinnamon.desktop.interface icon-theme "Papirus-Dark"
 
 # ------------------------
 # FINAL
