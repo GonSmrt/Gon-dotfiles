@@ -245,6 +245,9 @@ fi
 
 print_section "Personalización del escritorio"
 
+echo "🖥️ Aplicando configuración para: $DESKTOP"
+
+
 apply_desktop_theme() {
 
 	case "$DESKTOP" in
