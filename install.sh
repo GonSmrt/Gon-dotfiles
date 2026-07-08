@@ -242,6 +242,8 @@ echo "🔤 Actualizando caché de fuentes..."
 
 fc-cache -f
 
+echo "✅ Caché de fuentes actualizada"
+
 #------------------------
 # TEMAS E ICONOS
 #------------------------
