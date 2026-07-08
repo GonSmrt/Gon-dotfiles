@@ -240,7 +240,7 @@ cp -r "$REPO_DIR/resources/fonts/." "$HOME/.local/share/fonts/"
 
 echo "🔤 Actualizando caché de fuentes..."
 
-fc-cache -fv
+fc-cache -f
 
 #------------------------
 # TEMAS E ICONOS
