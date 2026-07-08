@@ -12,8 +12,8 @@ sudo pacman -S --needed git
 ### Instalación
 
 ```bash
-git clone https://github.com/GonSmrt/Gon-dotfiles.git
-cd Gon-dotfiles
+git clone https://github.com/GonSmrt/Gon-dotfiles.git ~/gon-dotfiles
+cd ~/gon-dotfiles
 ./install.sh
 ```
 
