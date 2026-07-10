@@ -71,13 +71,8 @@ config_dotfiles
 # WALLPAPER
 #-------------------------
 
-print_section "Wallpaper"
-
-echo "🖼️ Copiando wallpapers..."
-
-mkdir -p "$HOME/Pictures/Wallpapers"
-cp -r "$REPO_DIR/resources/wallpapers/." "$HOME/Pictures/Wallpapers/"
-
+source scripts/wallpaper.sh
+install_wallpaper
 
 #------------------------
 # Fuentes
