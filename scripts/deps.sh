@@ -32,7 +32,6 @@ install_deps_arch() {
         wget \
         unzip \
         fontconfig \
-	zsh-theme-powerlevel10k
 	
 }
 
