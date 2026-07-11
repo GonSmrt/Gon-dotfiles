@@ -93,12 +93,16 @@ echo "🎨 Instalando temas..."
 
 mkdir -p "$HOME/.themes"
 
-if [ -d "$REPO_DIR/resources/themes/Orchis-Dark" ]; then
-    cp -r "$REPO_DIR/resources/themes/Orchis-Dark" "$HOME/.themes/"
+if [ -d "$HOME/.themes/Orchis-Dark" ]; then
 
-    echo "✅ Orchis-Dark instalado"
-else
     echo "✅ Orchis-Dark ya estaba instalado"
+
+elif [ -d "$REPO_DIR/resources/themes/Orchis-Dark" ]; then
+	cp -r "$REPO_DIR/resources/themes/Orchis-Dark" "$HOME/.themes/"
+	echo "✅ Orchis-Dark instalado"
+
+else
+    echo "❌ Orchis-Dark no se encontró"
 
 fi
 
@@ -106,12 +110,16 @@ echo "🖼️ Instalando iconos..."
 
 mkdir -p "$HOME/.icons"
 
-if [ -d "$REPO_DIR/resources/icons/Papirus-Dark" ]; then
+if [ -d "$HOME/.icons/Papirus-Dark" ]; then
+
+    echo "Papirus-Dark ya estaba instalado"
+
+elif [ -d "$REPO_DIR/resources/icons/Papirus-Dark" ]; then
     cp -r "$REPO_DIR/resources/icons/Papirus-Dark" "$HOME/.icons/"
 
     echo "✅ Papirus-Dark instalado"
 else
-    echo "✅ Papirus-Dark ya estaba instalado"
+    echo "❌ Papiirus-Dark no se encontró"
 
 fi
 
