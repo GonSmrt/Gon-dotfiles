@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 print_section() {
     echo
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -22,63 +24,63 @@ print_banner
 # DETECCIÓN DEL SISTEMA
 # ------------------------
 
-source scripts/system.sh
+source "$SCRIPT_DIR/scripts/system.sh"
 detect_system
 
 # ------------------------
 # REPO
 # ------------------------
 
-source scripts/repo.sh
+source "$SCRIPT_DIR/scripts/repo.sh"
 repo_setup
 
 # ------------------------
 # DEPENDENCIAS
 # ------------------------
 
-source scripts/deps.sh
+source "$SCRIPT_DIR/scripts/deps.sh"
 install_deps
 
 # ------------------------
 # SHELL
 # ------------------------
 
-source scripts/shell.sh
+source "$SCRIPT_DIR/scripts/shell.sh"
 install_shell
 
 # ------------------------
 # BACKUPS
 # ------------------------
 
-source scripts/buckups.sh
+source "$SCRIPT_DIR/scripts/buckups.sh"
 Create_backups
 
 # ------------------------
 # HOME  DOTFILES
 # ------------------------
 
-source scripts/hdotfiles.sh
+source "$SCRIPT_DIR/scripts/hdotfiles.sh"
 install_hdotfiles
 
 #-------------------------
 # CONFIG DOTFILES
 #-------------------------
 
-source scripts/configdotfiles.sh
+source "$SCRIPT_DIR/scripts/configdotfiles.sh"
 config_dotfiles
 
 #-------------------------
 # WALLPAPER
 #-------------------------
 
-source scripts/wallpaper.sh
+source "$SCRIPT_DIR/scripts/wallpaper.sh"
 install_wallpaper
 
 #------------------------
 # Fuentes
 #-----------------------
 
-source scripts/fonts.sh
+source "$SCRIPT_DIR/scripts/fonts.sh"
 install_fonts
 
 #------------------------
