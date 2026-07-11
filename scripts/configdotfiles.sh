@@ -2,8 +2,8 @@ config_dotfiles() {
 
 print_section "Configuraciones"
 
-echo "⚙️ Instalando Fastfetch..."
-echo "⚙️ Instalando Kitty..."
+echo "⚙️ Aplicando configuración de Fastfetch..."
+echo "⚙️ IAplicando configuración de Kitty..."
 
 # fastfetch (más robusto que glob)
 mkdir -p "$HOME/.config/fastfetch"
