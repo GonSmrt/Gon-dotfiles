@@ -160,10 +160,6 @@ install_common_resources
 
 case "$DESKTOP" in
 
-	*Cinnamon*)
-	    install_cinnamon_resources
-	    ;;
-
 	*KDE*)
 	    install_kde_resources
 	    ;;
