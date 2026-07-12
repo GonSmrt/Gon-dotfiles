@@ -83,11 +83,13 @@ install_wallpaper
 source "$SCRIPT_DIR/scripts/fonts.sh"
 install_fonts
 
-#------------------------
-# TEMAS E ICONOS
-#------------------------
+#-----------------------------------
+# INSTALACIÓN DE RECURSOS VISUALES
+#-----------------------------------
 
-print_section "Temas e iconos"
+print_section "Instalación de recursos visuales"
+
+install_common_resources() {
 
 echo "🎨 Instalando temas..."
 
@@ -122,6 +124,55 @@ else
     echo "❌ Papiirus-Dark no se encontró"
 
 fi
+
+}
+
+install_kde_resources() {
+
+echo "⚙️ Recursos de KDE"
+
+mkdir -p "$HOME/.local/share/plasma/look-and-feel"
+
+if [ -d "$HOME/.local/share/plasma/look-and-feel/Otto" ]; then
+	echo "✅ Otto ya estaba instalado"
+
+elif [ -d "$REPO_DIR/resources/look-and-feel/Otto" ]; then
+
+	cp -a "$REPO_DIR/resources/look-and-feel/Otto" "$HOME/.local/share/plasma/look-and-feel/"
+	echo "✅ Otto instalado"
+
+else
+	echo "❌ Otto no encontrado"
+
+fi
+
+}
+
+install_hyprland_resources() {
+
+	echo "🚧 Pendiente"
+
+}
+
+install_common_resources
+
+case "$DESKTOP" in
+
+	*Cinnamon*)
+	    install_cinnamon_resources
+	    ;;
+
+	*KDE*)
+	    install_kde_resources
+	    ;;
+
+	*Hyprland*)
+	    install_hyprland_resources
+	    ;;
+
+	esac
+
+}
 
 
 #-------------------------
