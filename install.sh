@@ -87,7 +87,6 @@ install_fonts
 # INSTALACIÓN DE RECURSOS VISUALES
 #-----------------------------------
 
-print_section "Instalación de recursos visuales"
 
 install_common_resources() {
 
@@ -154,6 +153,7 @@ install_hyprland_resources() {
 
 }
 
+
 install_resources() {
 
 install_common_resources
@@ -172,6 +172,9 @@ case "$DESKTOP" in
 
 }
 
+}
+print_section "Instalación de recursos visuales"
+install_resources
 
 #-------------------------
 # Autoinstalador
