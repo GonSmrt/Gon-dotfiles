@@ -84,7 +84,7 @@ case "$DESKTOP" in
 
 }
 
-}
+
 print_section "Instalación de recursos visuales"
 install_resources
 
