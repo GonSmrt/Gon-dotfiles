@@ -154,6 +154,8 @@ install_hyprland_resources() {
 
 }
 
+install_resources() {
+
 install_common_resources
 
 case "$DESKTOP" in
