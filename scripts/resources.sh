@@ -40,6 +40,8 @@ fi
 
 install_kde_resources() {
 
+install_otto() {
+
 echo "⚙️ Recursos de KDE"
 
 mkdir -p "$HOME/.local/share/plasma/look-and-feel"
@@ -58,6 +60,41 @@ else
 fi
 
 }
+
+install_oxygen_neon() {
+
+command -v git >/dev/null || {
+	echo "❌ Git no está instalado."
+	return 1
+}
+
+if [ -d "$HOME/.local/share/icons/oxy-neon" ]; then
+	echo "🖱️ Oxygen Neon ya está instalado."
+	return
+fi
+
+local TMP
+TMP=$(mktemp -d)
+
+echo "📥 Descargando Oxygen Neon..."
+
+git clone \
+	--depth 1 \
+	https://github.com/mesonjod/linux-oxygen-neon-cursors.git \
+	"$TMP/oxygen"
+mkdir -p "$HOME/.local/share/icons"
+
+cp -a \
+	"$TMP/oxygen/oxy-neon" \
+	"$HOME/.local/share/icons/"
+
+rm -rf "$TMP"
+
+	echo "✅ Cursor instalado."
+}
+
+install_otto
+install_oxygen_neon
 
 install_hyprland_resources() {
 
