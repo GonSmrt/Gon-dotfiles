@@ -11,7 +11,7 @@ if [ -d "$HOME/.themes/Orchis-Dark" ]; then
     echo "✅ Orchis-Dark ya estaba instalado"
 
 elif [ -d "$REPO_DIR/resources/themes/Orchis-Dark" ]; then
-	cp -r "$REPO_DIR/resources/themes/Orchis-Dark" "$HOME/.themes/"
+	cp -a "$REPO_DIR/resources/themes/Orchis-Dark" "$HOME/.themes/"
 	echo "✅ Orchis-Dark instalado"
 
 else
@@ -28,11 +28,11 @@ if [ -d "$HOME/.icons/Papirus-Dark" ]; then
     echo "Papirus-Dark ya estaba instalado"
 
 elif [ -d "$REPO_DIR/resources/icons/Papirus-Dark" ]; then
-    cp -r "$REPO_DIR/resources/icons/Papirus-Dark" "$HOME/.icons/"
+    cp -a "$REPO_DIR/resources/icons/Papirus-Dark" "$HOME/.icons/"
 
     echo "✅ Papirus-Dark instalado"
 else
-    echo "❌ Papiirus-Dark no se encontró"
+    echo "❌ Papirus-Dark no se encontró"
 
 fi
 
@@ -91,13 +91,17 @@ echo "🖱️ Instalando Oxygen Neon..."
 
 mkdir -p "$HOME/.local/share/icons"
 
-cp -a \
+if cp -a \
         "$TMP/oxygen/oxy-neon" \
-        "$HOME/.local/share/icons/"
+        "$HOME/.local/share/icons/"; then
+	echo "✅ Cursor instalado."
 
+else
 
+	echo "❌ Error instalando el cursor."
+	return 1
 
-        echo "✅ Cursor instalado."
+fi
 }
 
 install_kde_resources() {
