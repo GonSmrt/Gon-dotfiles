@@ -38,24 +38,21 @@ fi
 
 }
 
-install_kde_resources() {
-
 install_otto() {
 
-echo "⚙️ Recursos de KDE"
 
 mkdir -p "$HOME/.local/share/plasma/look-and-feel"
 
 if [ -d "$HOME/.local/share/plasma/look-and-feel/Otto" ]; then
-	echo "✅ Otto ya estaba instalado"
+        echo "✅ Otto ya estaba instalado"
 
 elif [ -d "$REPO_DIR/resources/look-and-feel/Otto" ]; then
 
-	cp -a "$REPO_DIR/resources/look-and-feel/Otto" "$HOME/.local/share/plasma/look-and-feel/"
-	echo "✅ Otto instalado"
+        cp -a "$REPO_DIR/resources/look-and-feel/Otto" "$HOME/.local/share/plasma/look-and-feel/"
+        echo "✅ Otto instalado"
 
 else
-	echo "❌ Otto no encontrado"
+        echo "❌ Otto no encontrado"
 
 fi
 
@@ -64,13 +61,13 @@ fi
 install_oxygen_neon() {
 
 command -v git >/dev/null || {
-	echo "❌ Git no está instalado."
-	return 1
+        echo "❌ Git no está instalado."
+        return 1
 }
 
 if [ -d "$HOME/.local/share/icons/oxy-neon" ]; then
-	echo "🖱️ Oxygen Neon ya está instalado."
-	return
+        echo "🖱️ Oxygen Neon ya está instalado."
+        return
 fi
 
 local TMP
@@ -79,23 +76,29 @@ TMP=$(mktemp -d)
 echo "📥 Descargando Oxygen Neon..."
 
 git clone \
-	--depth 1 \
-	https://github.com/mesonjod/linux-oxygen-neon-cursors.git \
-	"$TMP/oxygen"
+        --depth 1 \
+        https://github.com/mesonjod/linux-oxygen-neon-cursors.git \
+        "$TMP/oxygen"
 mkdir -p "$HOME/.local/share/icons"
 
 cp -a \
-	"$TMP/oxygen/oxy-neon" \
-	"$HOME/.local/share/icons/"
+        "$TMP/oxygen/oxy-neon" \
+        "$HOME/.local/share/icons/"
 
 rm -rf "$TMP"
 
-	echo "✅ Cursor instalado."
+        echo "✅ Cursor instalado."
 }
 
-install_otto
-install_oxygen_neon
+install_kde_resources() {
 
+	echo "⚙️ Recursos de KDE"
+
+	install_otto
+	install_oxygen_neon
+
+
+}
 install_hyprland_resources() {
 
 	echo "🚧 Pendiente"
