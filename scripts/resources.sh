@@ -73,19 +73,30 @@ fi
 local TMP
 TMP=$(mktemp -d)
 
-echo "📥 Descargando Oxygen Neon..."
+trap 'rm -rf "$TMP"' RETURN
 
-git clone \
+echo "🖱️ Descargando Oxygen Neon..."
+
+
+if ! git clone \
         --depth 1 \
         https://github.com/mesonjod/linux-oxygen-neon-cursors.git \
-        "$TMP/oxygen"
+        "$TMP/oxygen"; then
+	
+	echo "❌ No se pudo descargar Oxygen Neon."
+	rm -rf "$TMP"
+	return 1
+fi
+
+echo "🖱️ Instalando Oxygen Neon..."
+
 mkdir -p "$HOME/.local/share/icons"
 
 cp -a \
         "$TMP/oxygen/oxy-neon" \
         "$HOME/.local/share/icons/"
 
-rm -rf "$TMP"
+
 
         echo "✅ Cursor instalado."
 }
