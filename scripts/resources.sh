@@ -84,7 +84,6 @@ if ! git clone \
         "$TMP/oxygen"; then
 	
 	echo "❌ No se pudo descargar Oxygen Neon."
-	rm -rf "$TMP"
 	return 1
 fi
 
