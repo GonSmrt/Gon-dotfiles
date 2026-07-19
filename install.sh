@@ -99,7 +99,7 @@ print_section "Personalización del escritorio"
 echo "🖥️ Aplicando configuración para: $DESKTOP"
 
 
-apply_desktop_theme() {
+apply_desktop_config() {
 
 	case "$DESKTOP" in
 
@@ -127,15 +127,6 @@ apply_desktop_theme() {
 	;;
 
 	    KDE)
-
-	apply_kde() {
-
-		apply_kde_lookandfeel
-		apply_kde_colors
-		apply_kde_icons
-		apply_kde_cursor
-
-}
 
 	apply_kde_lookandfeel() {
 		CURRENT_THEME=$(kreadconfig6 --file plasmarc --group Theme --key name)
@@ -187,6 +178,15 @@ apply_desktop_theme() {
 
 }
 
+        apply_kde() {
+
+                apply_kde_lookandfeel
+                apply_kde_colors
+                apply_kde_icons
+                apply_kde_cursor
+
+}
+
 apply_kde
 
 	;;
@@ -208,7 +208,7 @@ apply_kde
     esac
 }
 
-apply_desktop_theme
+apply_desktop_config
 
 # ------------------------
 # FINAL
