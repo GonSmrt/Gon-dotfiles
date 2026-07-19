@@ -94,11 +94,11 @@ fi
 
 echo "🖱️ Instalando Oxygen Neon..."
 
-mkdir -p "$HOME/.local/share/icons"
+mkdir -p "$HOME/.local/share/icons/oxy-neon"
 
 if cp -a \
-        "$TMP/oxygen" \
-        "$HOME/.local/share/icons/"; then
+        "$TMP/oxygen/." \
+        "$HOME/.local/share/icons/oxy-neon/"; then
 	echo "✅ Cursor instalado."
 
 else
