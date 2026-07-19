@@ -73,7 +73,7 @@ fi
 local TMP
 TMP=$(mktemp -d)
 
-trap 'rm -rf "$TMP"' RETURN
+trap "rm -rf '$TMP'" RETURN
 
 echo "🖱️ Descargando Oxygen Neon..."
 
