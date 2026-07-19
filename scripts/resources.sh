@@ -87,7 +87,7 @@ if ! git clone \
 	return 1
 fi
 
-if [ ! -d "$TMP/oxygen/oxy-neon" ]; then
+if [ ! -d "$TMP/oxygen/index.theme" ]; then
 	echo "❌ El cursor no se encontró en el repositorio."
 	return 1
 fi
@@ -97,7 +97,7 @@ echo "🖱️ Instalando Oxygen Neon..."
 mkdir -p "$HOME/.local/share/icons"
 
 if cp -a \
-        "$TMP/oxygen/oxy-neon" \
+        "$TMP/oxygen" \
         "$HOME/.local/share/icons/"; then
 	echo "✅ Cursor instalado."
 
