@@ -26,7 +26,38 @@ install_powerlevel10k() {
 	fi
 }
 
+install_zsh_plugins() {
+
+	echo "🔌 Instalando plugins de ZSH..."
+
+	local ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+	# zsh-autosuggestions
+
+	if [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
+
+		echo "✅ zsh-autosuggestions ya instalado"
+	else
+		git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+
+		echo "✅ zsh-autosuggestions instalado"
+
+	fi
+
+	# zsh-syntax-highlighting
+
+	if [ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
+
+		echo "✅ zsh-syntax-highlighting ya instalado"
+	else
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+
+		echo "✅ zsh-syntax-highlighting instalado"
+	fi
+
+}
+
 install_oh_my_zsh
 install_powerlevel10k
-
+install_zsh_plugins
 }
